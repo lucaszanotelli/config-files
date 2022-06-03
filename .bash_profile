@@ -46,38 +46,3 @@ export NEXT_TELEMETRY_DISABLED=1
 # suppres zsh is the default shell message
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# autocomplete ssh hosts
-_complete_ssh_hosts ()
-{
-        COMPREPLY=()
-        cur="${COMP_WORDS[COMP_CWORD]}"
-        comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
-                        cut -f 1 -d ' ' | \
-                        sed -e s/,.*//g | \
-                        grep -v ^# | \
-                        uniq | \
-                        grep -v "\[" ;
-                cat ~/.ssh/config | \
-                        grep "^Host " | \
-                        awk '{print $2}'
-                `
-        COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
-        return 0
-}
-complete -F _complete_ssh_hosts ssh
-
-eval "$(starship init bash)"
-
-# autocomple for kubectl aliases
-complete -F __start_kubectl kubeq2p
-complete -F __start_kubectl kubepers
-
-# OCTAVIA CLI 0.39.1-alpha
-OCTAVIA_ENV_FILE=/Users/Lucas/.octavia
-export OCTAVIA_ENABLE_TELEMETRY=False
-alias octavia="docker run -i --rm -v \$(pwd):/home/octavia-project --network host --env-file \${OCTAVIA_ENV_FILE} --user \$(id -u):\$(id -g) airbyte/octavia-cli:0.39.1-alpha --airbyte-url $AIRBYTE_URL --workspace-id $AIRBYTE_WORKSPACE_ID --disable-telemetry"
-
-# nvm 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
