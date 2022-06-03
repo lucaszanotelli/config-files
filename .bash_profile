@@ -5,7 +5,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-export PRITUNL_PIN=`cat ~/.config/pritunl.pin`
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignorespace:ignoredups
@@ -46,10 +45,6 @@ if [ -f '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion
 export NEXT_TELEMETRY_DISABLED=1
 # suppres zsh is the default shell message
 export BASH_SILENCE_DEPRECATION_WARNING=1
-#  fix brew doctor's warning ""config" scripts exist outside your system
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-eval "$(pyenv init --path)"
-source $HOME/.iterm2_shell_integration.bash
 
 # autocomplete ssh hosts
 _complete_ssh_hosts ()
