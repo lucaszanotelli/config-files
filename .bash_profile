@@ -46,3 +46,4 @@ export NEXT_TELEMETRY_DISABLED=1
 # suppres zsh is the default shell message
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
+source $HOME/.bash_aliases
