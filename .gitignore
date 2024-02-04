@@ -7,4 +7,5 @@
 !.bash_profile
 !config.sh
 !init.vim
+!.config/nvim/*
 
