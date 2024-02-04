@@ -1,3 +1,4 @@
+alias snowsql="/Applications/SnowSQL.app/Contents/MacOS/snowsql"
 alias tree='tree --gitignore'
 alias from_sap_ts='_() { [ "$1" ] && x="$1"; date -ur $((y=x/10000, y+631152000)); }; _'
 alias to_sap_ts='_() { [ "$1" ] && x=`date -j -f "%Y-%m-%d %H:%M:%S %z" "$1" "+%s"`; echo $((y=x-631152000, y*10000)); }; _'
